@@ -5,7 +5,9 @@ def find_path(node_map, start, end):
     paths = _find_path(node_map, end, [start])
 
     def get_path_cost(path):
-        return sum(map(lambda x: node_map.get_cost(path[x], path[x + 1]), range(len(path) - 1)))
+        return sum(
+            map(lambda x: node_map.get_cost(path[x], path[x + 1]), range(len(path) - 1))
+        )
 
     path_cost = list(map(lambda x: Path(x, get_path_cost(x)), paths))
     return sorted(path_cost, key=lambda x: x.cost)
